@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fill out the survey — Academic Bureaucracy Survey</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main class="sheet">
+
+  <p class="crumb"><a href="index.html">Academic Bureaucracy Survey</a></p>
+
+  <header class="docket">
+    <div class="docket-body">
+      <h1>Form ABS-1</h1>
+      <p class="subtitle">Six questions about how long things take at your institution.</p>
+    </div>
+    <div class="docket-meta">
+      <div><b>Time</b>About five minutes</div>
+      <div><b>Scope</b>United States</div>
+      <div><b>Answers</b>Institution-level only</div>
+    </div>
+  </header>
+
+  <div class="instructions">
+    <h2>Before you start</h2>
+    <ul>
+      <li>This survey tracks quantitative information, not qualitative impressions. Please look up the actual dates in your email or your institution's system rather than estimating.</li>
+      <li>Answer for your <b>most recent</b> experience within the <b>last 24 months</b>. If it falls outside that window, say so rather than reaching further back — procurement systems change.</li>
+      <li>All durations are <b>calendar days</b>, not business days. In Google Sheets, <code>=DATEDIF(A1,B1,"D")</code> gives the days between two dates, where A1 is the earlier one.</li>
+      <li>Skipping questions is fine and expected. An honest "never" is more useful to me than a guess.</li>
+    </ul>
+  </div>
+
+  <form id="abs-form" novalidate>
+
+    <fieldset>
+      <legend>About you</legend>
+
+      <div class="q">
+        <label for="institution">What is the name of your institution?</label>
+        <input type="text" id="institution" name="institution" autocomplete="organization" required>
+      </div>
+
+      <div class="q">
+        <label for="email">What is your email address?</label>
+        <p class="help">Used once to verify that you work at the institution you named, and to reduce spam responses. The address is replaced with a one-way hash after verification and is never published or shared.</p>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+
+      <div class="pair">
+        <div class="q">
+          <label for="division">Which division is your work in?</label>
+          <select id="division" name="division">
+            <option value="">Select one</option>
+            <option>Biological and life sciences</option>
+            <option>Physical sciences and mathematics</option>
+            <option>Engineering and computer science</option>
+            <option>Medicine and health sciences</option>
+            <option>Social sciences</option>
+            <option>Humanities and arts</option>
+            <option>Business, law, and public policy</option>
+            <option>Education</option>
+            <option>Library, museum, or research administration</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="q">
+          <label for="position">What is your position?</label>
+          <select id="position" name="position">
+            <option value="">Select one</option>
+            <option>PhD student</option>
+            <option>Postdoc</option>
+            <option>Non-tenured faculty</option>
+            <option>Tenured faculty</option>
+            <option>Research staff</option>
+            <option>Administrator</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Getting money you have already been given</legend>
+
+      <div class="q" data-name="grant_days">
+        <span class="qtext">Consider the most recent grant you received for which you have both an award email and an email notifying you the funds were available internally.</span>
+        <p class="help">How many days passed between the award notification email and the moment you first had access to an active account or index number you could spend from?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="grant_days_type" value="days"><span class="days-row"><input type="number" min="0" max="3000" step="1" name="grant_days" aria-label="Days from award notification to spendable account"><span class="unit">calendar days</span></span></label>
+          <div class="escape">
+            <label class="choice"><input type="radio" name="grant_days_type" value="outside"><span>Not in the last 24 months</span></label>
+            <label class="choice"><input type="radio" name="grant_days_type" value="never"><span>I have never received a grant at this institution</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="q" data-name="reimb_days">
+        <span class="qtext">Consider the most recent reimbursement you submitted for which you have both the submission date and the payout date.</span>
+        <p class="help">How many days passed from when you submitted your receipts to when the money reached you?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="reimb_days_type" value="days"><span class="days-row"><input type="number" min="0" max="3000" step="1" name="reimb_days" aria-label="Days from receipt submission to payout"><span class="unit">calendar days</span></span></label>
+          <div class="escape">
+            <label class="choice"><input type="radio" name="reimb_days_type" value="outside"><span>Not in the last 24 months</span></label>
+            <label class="choice"><input type="radio" name="reimb_days_type" value="never"><span>I have never submitted an expense for reimbursement at this institution</span></label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Buying things</legend>
+
+      <div class="q" data-name="po_days">
+        <span class="qtext">Consider your most recent work purchase that was not a reimbursement, and for which you have evidence of the submission and approval dates.</span>
+        <p class="help">How many days passed from when you submitted the purchase order request to when you were notified the PO had been approved?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="po_days_type" value="days"><span class="days-row"><input type="number" min="0" max="3000" step="1" name="po_days" aria-label="Days from purchase order submission to approval"><span class="unit">calendar days</span></span></label>
+          <div class="escape">
+            <label class="choice"><input type="radio" name="po_days_type" value="outside"><span>Not in the last 24 months</span></label>
+            <label class="choice"><input type="radio" name="po_days_type" value="never"><span>I have never submitted a purchase request at this institution</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="q" data-name="vendor_forms_vendor">
+        <span class="qtext">How many distinct forms, documents, or certifications must a new vendor provide to be added to your institution's purchasing system?</span>
+        <p class="help">Answer for the process as it stands today, for a typical US-based small business selling standard goods or services. Do not answer for a foreign entity, an individual contractor, or a sole-source purchase, which normally require extra paperwork. Count only what the vendor themselves must supply: W-9, certificate of insurance, banking or ACH form, supplier registration, financial statements, compliance attestations.</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="vendor_forms_vendor_type" value="count"><span class="days-row"><input type="number" min="0" max="60" step="1" name="vendor_forms_vendor" aria-label="Documents the vendor must provide"><span class="unit">documents</span></span></label>
+          <div class="escape">
+            <label class="choice"><input type="radio" name="vendor_forms_vendor_type" value="dontknow"><span>Don't know — handled entirely by administrative staff</span></label>
+            <label class="choice"><input type="radio" name="vendor_forms_vendor_type" value="never"><span>I have never been involved in adding a vendor at this institution</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="q" data-name="vendor_forms_self">
+        <span class="qtext">And how many must you personally complete or help complete for that same vendor to be added?</span>
+        <p class="help">For example, sole-source justifications, requisition forms, or internal approval memos.</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="vendor_forms_self_type" value="count"><span class="days-row"><input type="number" min="0" max="60" step="1" name="vendor_forms_self" aria-label="Documents you must complete"><span class="unit">documents</span></span></label>
+          <div class="escape">
+            <label class="choice"><input type="radio" name="vendor_forms_self_type" value="dontknow"><span>Don't know</span></label>
+            <label class="choice"><input type="radio" name="vendor_forms_self_type" value="never"><span>Not applicable</span></label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Hiring people</legend>
+
+      <div class="q" data-name="hire_days">
+        <span class="qtext">Consider the most recent US-based person you hired or helped hire into a research or staff role.</span>
+        <p class="help">Exclude anyone who needed visa sponsorship — that delay belongs to the federal government, not your university. How many days passed from when the candidate accepted the offer to their first day of work?</p>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="hire_days_type" value="days"><span class="days-row"><input type="number" min="0" max="3000" step="1" name="hire_days" aria-label="Days from offer acceptance to first day of work"><span class="unit">calendar days</span></span></label>
+          <div class="escape">
+            <label class="choice"><input type="radio" name="hire_days_type" value="outside"><span>Not in the last 24 months</span></label>
+            <label class="choice"><input type="radio" name="hire_days_type" value="never"><span>I have never hired or helped hire anyone at this institution</span></label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Anything else</legend>
+      <div class="q">
+        <label for="comments">Notes, comments, or questions you'd like to see in the next version</label>
+        <textarea id="comments" name="comments"></textarea>
+      </div>
+    </fieldset>
+
+    <div class="submit-row">
+      <button type="submit" class="cta" id="submit-btn">Submit responses</button>
+    </div>
+
+    <p class="status" id="status" hidden role="status"></p>
+  </form>
+
+  <div class="done" id="done" hidden>
+    <h2>Received. Thank you.</h2>
+    <p>Your institution's row gets closer to being publishable with every response. The single most useful thing you can do now is send this to two colleagues at your university — the results only work if enough people at one place answer.</p>
+    <p><a href="index.html">Back to the survey homepage</a></p>
+  </div>
+
+  <footer class="foot">
+    <p>Responses are published only as institution-level medians, and only once an institution clears the reporting threshold. <a href="index.html#privacy">How the data is handled</a>.</p>
+  </footer>
+
+</main>
+<script src="assets/survey.js"></script>
+</body>
+</html>
