@@ -3,7 +3,7 @@
    SET THIS to the /exec URL of your deployed Google Apps Script web
    app (see apps-script.gs and README.md). Until you do, submitting
    will show an error instead of silently losing responses.          */
-const ENDPOINT = "PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE";
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbxQ5V1qEIVpUVm9sL09d1jIhK3LfA2Y9nhxJpxO0cB18bI11zTSrrf8j4wbDn-eUVrc/exec";
 
 const form = document.getElementById("abs-form");
 const statusEl = document.getElementById("status");
