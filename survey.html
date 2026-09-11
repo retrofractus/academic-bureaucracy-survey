@@ -17,23 +17,17 @@
 
   <header class="docket">
     <div class="docket-body">
-      <h1>Form ABS-1</h1>
+      <h1>The AB Survey</h1>
       <p class="subtitle">Six questions about how long things take at your institution.</p>
-    </div>
-    <div class="docket-meta">
-      <div><b>Time</b>About five minutes</div>
-      <div><b>Scope</b>United States</div>
-      <div><b>Answers</b>Institution-level only</div>
     </div>
   </header>
 
   <div class="instructions">
     <h2>Before you start</h2>
     <ul>
-      <li>This survey tracks quantitative information, not qualitative impressions. Please look up the actual dates in your email or your institution's system rather than estimating.</li>
-      <li>Answer for your <b>most recent</b> experience within the <b>last 24 months</b>. If it falls outside that window, say so rather than reaching further back — procurement systems change.</li>
-      <li>All durations are <b>calendar days</b>, not business days. In Google Sheets, <code>=DATEDIF(A1,B1,"D")</code> gives the days between two dates, where A1 is the earlier one.</li>
-      <li>Skipping questions is fine and expected. An honest "never" is more useful to me than a guess.</li>
+      <li>This survey seeks to gather accurate quantitative information, and memories are imperfect. Please look up the actual information in your email or your institution's system rather than estimating.</li>
+      <li>Answer for your <b>most recent</b> experience within the <b>last 24 months</b>. There is a response option if you've not had a relevant interaction in the last 24 months. </li>
+      <li>All durations are <b>calendar days</b>, not business days. One way to easily calculate this is to use Google Sheets: <code>=DATEDIF(A1,B1,"D")</code> gives the days between two dates, where A1 is the earlier one.</li>
     </ul>
   </div>
 
@@ -49,7 +43,7 @@
 
       <div class="q">
         <label for="email">What is your email address?</label>
-        <p class="help">Used once to verify that you work at the institution you named, and to reduce spam responses. The address is replaced with a one-way hash after verification and is never published or shared.</p>
+        <p class="help">I use this to verify that you work at the institution you named, and to reduce spam responses. The address is replaced with a one-way hash after verification and is never published or shared.</p>
         <input type="email" id="email" name="email" autocomplete="email" required>
       </div>
 
@@ -132,7 +126,7 @@
 
       <div class="q" data-name="vendor_forms_vendor">
         <span class="qtext">How many distinct forms, documents, or certifications must a new vendor provide to be added to your institution's purchasing system?</span>
-        <p class="help">Answer for the process as it stands today, for a typical US-based small business selling standard goods or services. Do not answer for a foreign entity, an individual contractor, or a sole-source purchase, which normally require extra paperwork. Count only what the vendor themselves must supply: W-9, certificate of insurance, banking or ACH form, supplier registration, financial statements, compliance attestations.</p>
+        <p class="help">Answer for a typical US-based small business selling standard goods or services. Do not answer for a foreign entity, an individual contractor, or a sole-source purchase, which normally require extra paperwork. Count only what the vendor themselves must supply. This might be things like a W-9, certificate of insurance, banking or ACH form, supplier registration, financial statements, compliance attestations.</p>
         <div class="choices">
           <label class="choice"><input type="radio" name="vendor_forms_vendor_type" value="count"><span class="days-row"><input type="number" min="0" max="60" step="1" name="vendor_forms_vendor" aria-label="Documents the vendor must provide"><span class="unit">documents</span></span></label>
           <div class="escape">
@@ -160,7 +154,7 @@
 
       <div class="q" data-name="hire_days">
         <span class="qtext">Consider the most recent US-based person you hired or helped hire into a research or staff role.</span>
-        <p class="help">Exclude anyone who needed visa sponsorship — that delay belongs to the federal government, not your university. How many days passed from when the candidate accepted the offer to their first day of work?</p>
+        <p class="help">Excluding anyone who needed visa sponsorship, how many days passed from when the candidate accepted the offer to when they were approved to begin working? (This might be their start date, but if the employee had an intentionally delayed start, focus on the paperwork timing).</p>
         <div class="choices">
           <label class="choice"><input type="radio" name="hire_days_type" value="days"><span class="days-row"><input type="number" min="0" max="3000" step="1" name="hire_days" aria-label="Days from offer acceptance to first day of work"><span class="unit">calendar days</span></span></label>
           <div class="escape">
@@ -188,12 +182,12 @@
 
   <div class="done" id="done" hidden>
     <h2>Received. Thank you.</h2>
-    <p>Your institution's row gets closer to being publishable with every response. The single most useful thing you can do now is send this to two colleagues at your university — the results only work if enough people at one place answer.</p>
+    <p> I can't publish data until we have enough responses from your institution, so I'd greatly appreciate if you sent this to additional colleagues. </p>
     <p><a href="index.html">Back to the survey homepage</a></p>
   </div>
 
   <footer class="foot">
-    <p>Responses are published only as institution-level medians, and only once an institution clears the reporting threshold. <a href="index.html#privacy">How the data is handled</a>.</p>
+    <p><a href="index.html#privacy">How the data is handled</a>.</p>
   </footer>
 
 </main>
